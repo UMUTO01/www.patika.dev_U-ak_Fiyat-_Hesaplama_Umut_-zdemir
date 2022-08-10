@@ -1,0 +1,40 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.print("Gidilen Yol Km cinsinden:");
+        Scanner scan = new Scanner(System.in);
+        double Km = scan.nextDouble();
+        System.out.print("Yaş:");
+        int Age = scan.nextInt();
+        System.out.print("Gidiş dönüş için 2, Sadece gidiş için 1:");
+        int Return= scan.nextInt();
+        FlyightMeter(Km, Age, Return);
+
+    }
+    public static void FlyightMeter(double Km, int Age,int Return){
+        double NewKm = Km*(0.10);
+        double TotalPoint = 0;
+
+        if (Age < 12){
+            TotalPoint = NewKm - NewKm/2;
+        }
+        if(Age> 12 && Age < 24){
+            TotalPoint = NewKm - NewKm*(0.10);
+        }
+        if(Age>65){
+            TotalPoint = NewKm- NewKm*(0.30);
+        }
+        if (Return ==1){
+            System.out.print("Bilet Fiyatı:" + TotalPoint);
+        }
+        else{
+            double NewMoney = TotalPoint - TotalPoint*(0.20);
+            System.out.print("Bilet Fiyatı"+ NewMoney);
+        }
+
+    }
+}
